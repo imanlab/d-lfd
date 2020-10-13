@@ -20,8 +20,8 @@ Suturing is a frequently used operation in most of the surgeries and developing 
 
 ## Dataset Structure
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots base frames are included in the dataset as well. The overla structure of robot data can be stated as follow:
+
 
 ### Prerequisites
 
