@@ -22,6 +22,25 @@ Suturing is a frequently used operation in most of the surgeries and developing 
 
 The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots base frames are included in the dataset as well. The overla structure of robot data can be stated as follow:
 
+<p align="center">
+  <img width="700" src="images/cell(4).png">
+</p>
+
+a: joint space kinematic data of Arm 1 (1×6)
+
+b: joint space kinematic data of Arm 2 (1×6)
+
+c: pose of Arm 1 w.r.t its base frame (4×4)
+
+d: pose of Arm 2 w.r.t its base frame (4×4)
+
+e: pose of Arm 1 w.r.t its base frame at t+ 1
+
+f: pose ofArm 2 w.r.t its base frame at t+ 1
+
+g: 2D tracking target point on the image captured by 6 cameras(6×2)
+
+h: computed 3D position of the target point w.r.t Camera 3(1×3)
 
 ### Prerequisites
 
