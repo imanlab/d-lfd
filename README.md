@@ -1,4 +1,4 @@
-# Title-of-the-project
+# Deep Robot Learning from Demonstration (DRLfD): A Dataset For Autonomous Robotic Suturin
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
@@ -16,7 +16,7 @@
 
 ## About The Project
 
-The purpose of this repository is to provide an easy and consistent way of documenting the projects at IML. This part of the readme can be used to define the overall problem statement of the research project. Feel free to modify the structure of readme as per the project requirements. 
+Suturing is a frequently used operation in most of the surgeries and developing a robotic system for autonomous robotic suturing can be of significant assistant to surgery team in order to reduce the physical fatigue and cognitive load. Since tissues are deformable objects needle insertion and tissue manipulation is a complex control task. The second complexity of the control task belongs to the high dimensional sensory data (Visual sensor) which makes the problem very hard for conventional control theory/Learning from Demonstration algorithms. We have collected a dataset for piercing needle into an artificial tissue with da Vinci Research Kit (DVRK) to develop deep LfD models for robot control.
 
 ### Built With
 This section should list any major frameworks that you built your project using (preferrably along with links). Please try to specify the versions.
