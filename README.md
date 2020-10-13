@@ -1,11 +1,10 @@
-# Deep Robot Learning from Demonstration (DRLfD): A Dataset For Autonomous Robotic Suturin
+# Deep Robot Learning from Demonstration (D-RLfD): A Dataset For Autonomous Robotic Suturing
 
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
+* [Dataset Structure](#Dataset Structure)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
@@ -18,14 +17,8 @@
 
 Suturing is a frequently used operation in most of the surgeries and developing a robotic system for autonomous robotic suturing can be of significant assistant to surgery team in order to reduce the physical fatigue and cognitive load. Since tissues are deformable objects needle insertion and tissue manipulation is a complex control task. The second complexity of the control task belongs to the high dimensional sensory data (Visual sensor) which makes the problem very hard for conventional control theory/Learning from Demonstration algorithms. We have collected a dataset for piercing needle into an artificial tissue with da Vinci Research Kit (DVRK) to develop deep LfD models for robot control.
 
-### Built With
-This section should list any major frameworks that you built your project using (preferrably along with links). Please try to specify the versions.
 
-- **Operating system xx**
-- **Language xx.xx**
-- **ROS dist** 
-
-## Getting Started
+## Dataset Structure
 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
