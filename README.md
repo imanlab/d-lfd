@@ -4,7 +4,7 @@
 ## Table of Contents
 
 * [About the Project](#about-the-project)
-* [Dataset Structure](#Dataset Structure)
+* [Dataset Structure](#Dataset-Structure)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
 * [Usage](#usage)
