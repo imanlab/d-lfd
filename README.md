@@ -38,4 +38,4 @@ h: computed 3D position of the target point w.r.t Camera 3(1×3)
 
 ## Models
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos would be great! You can also provide links to more resources. 
+We have developed deep models for control action generation for the robot arm which manipulates the tissue to guide the needle tip to exit from a desired specified point. As such, we have deployed state of the art CNN and RNN architectures as as feature extractor and next state predicotr respectively. The baseline methods achieved satisfactory performance based on the prediction error. Other complex models can be developed to further improve the control action generation. 
