@@ -6,7 +6,7 @@ import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.callbacks import EarlyStopping
 from tensorflow.keras.layers import Dense, GlobalAveragePooling2D
-from tensorflow.keras.applications import ResNet152V2
+from tensorflow.keras.applications import MobileNetV2
 
 from tensorflow.keras.applications.resnet import preprocess_input
 from tensorflow.keras.preprocessing import image
@@ -14,12 +14,14 @@ from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import Model
 from tensorflow.keras.optimizers import Adam
 
+
 from sklearn import preprocessing
 from skimage.io import imread
 from skimage.transform import resize
 
 
-with tf.device('/gpu:1'):  
+
+with tf.device('/gpu:0'):
 
 	################################## Load Robot data ##################################################################
 	Arm2_CS_State = pd.read_csv('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/Arm2_CS_new.csv', header=None)
@@ -100,20 +102,21 @@ with tf.device('/gpu:1'):
 	my_testing_batch_generator = My_Custom_Generator(X_test_filenames, robot_state_test_input, robot_state_test_label, batch_size)
 	#######################################################################################################################################
 	##################################### Define CNN architecture #######################################################################
-
-	model = ResNet152V2(include_top=False, weights='imagenet', input_shape=(224 , 224 , 3))
+	model = MobileNetV2(include_top=False, weights='imagenet', input_shape=(224 , 224 , 3))
 	#model.summary()
 
 	y1 = model.output
 	y2 = GlobalAveragePooling2D()(y1)
-	y3 = Dense(1024,activation='relu')(y2) 
-	y4 = Dense(1024,activation='relu')(y3)
+	y3 = Dense(512,activation='relu')(y2) 
+	y4 = Dense(512,activation='relu')(y3) 
+
+
 	new_model = Model(inputs=model.input,outputs=y4)
 
 
-	for layer in new_model.layers[:561]:
+	for layer in model.layers[:101]:
 	    layer.trainable=False
-	for layer in new_model.layers[561:]:
+	for layer in model.layers[101:]:
 	    layer.trainable=True
 
 	cnn_out = new_model.output
@@ -130,18 +133,20 @@ with tf.device('/gpu:1'):
 	dense_4 = keras.layers.Dense(20, activation="relu")(dense_3)
 	output_layer = keras.layers.Dense(7, activation="linear")(dense_4)
 
-	ResNet_model = keras.models.Model(inputs=[new_model.input , robot_state_input_layer] , outputs=output_layer)
+	MobileNetV2_model = keras.models.Model(inputs=[new_model.input , robot_state_input_layer] , outputs=output_layer)
 
 	#####################################################################################################################
 	############################## compile and fit the model #########################################################
-	ResNet_model.compile(optimizer='adam',loss='mean_absolute_error', metrics=['mse','accuracy'])
 
-	monitor = EarlyStopping(monitor='accuracy', min_delta=1e-3, patience=3, 
+	MobileNetV2_model.compile(optimizer='adam',loss='mean_absolute_error', metrics=['mse','accuracy'])
+
+	monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=2, 
 	        verbose=1, mode='auto', restore_best_weights=True)
 
-	history = ResNet_model.fit_generator(generator=my_training_batch_generator, steps_per_epoch =int(50244 // batch_size), callbacks=[monitor], epochs=6)
+	history = MobileNetV2_model.fit_generator(generator=my_training_batch_generator, steps_per_epoch =int(50244 // batch_size), callbacks=[monitor], epochs=7)
 
 
-	ResNet_model.save('ResNet.h5')
+	MobileNetV2_model.summary()
 
-	#ResNet_model.summary()
+
+	MobileNetV2_model.save('MobileNetV2_model.h5')

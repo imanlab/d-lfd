@@ -23,53 +23,68 @@ from skimage.transform import resize
 
 
 
-with tf.device('/gpu:1'):  
+with tf.device('/gpu:0'):  
 
 	################################## Load Robot data ##################################################################
-	Arm2_CS_State = pd.read_csv('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Data/Arm2_CS_new.csv', header=None)
-	Arm2_NS_State = pd.read_csv('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Data/Arm2_NS_new.csv', header=None)
+	Arm2_CS_State = pd.read_csv('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/Arm2_CS_new.csv', header=None)
+	Arm2_NS_State = pd.read_csv('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/Arm2_NS_new.csv', header=None)
 
-	################################## Standardization ###################################################################
-	CS1_names = Arm2_CS_State.columns
-	NS1_names = Arm2_NS_State.columns
-	scaler = preprocessing.StandardScaler()
-	myScaler = scaler.fit(Arm2_CS_State)
-	Arm2_CS_State = myScaler.transform(Arm2_CS_State)
-	Arm2_NS_State = myScaler.transform(Arm2_NS_State)
-
-	Arm2_CS_State = pd.DataFrame(Arm2_CS_State, columns=CS1_names)
-	Arm2_NS_State = pd.DataFrame(Arm2_NS_State, columns=NS1_names)
-
-	Arm2_CS_State = np.array(Arm2_CS_State)
-	Arm2_NS_State = np.array(Arm2_NS_State)
-	############################################### Load image data #####################################################
-	robot_state_train_input = Arm2_CS_State[0:50244, :]
+	robot_state_train_input = Arm2_CS_State[0:50244][:]
 	print("Robot state input trainingset size: {}".format(robot_state_train_input.shape))
-	robot_state_train_label = Arm2_NS_State[0:50244, :]
+	robot_state_train_label = Arm2_NS_State[0:50244][:]
 	print("Robot state label trainingset size: {}".format(robot_state_train_label.shape))
 
-	robot_state_test_input = Arm2_CS_State[50244:, :]
+	robot_state_test_input = Arm2_CS_State[50244:][:]
 	print("Robot state input testset size: {}".format(robot_state_test_input.shape))
-	robot_state_test_label = Arm2_NS_State[50244:, :]
+	robot_state_test_label = Arm2_NS_State[50244:][:]
 	print("Robot state label testset size: {}".format(robot_state_test_label.shape))
-	######################################################################################################################
-	X_train_filenames = pd.read_csv('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Data/trainImageName.csv', header=None)
-	X_test_filenames = pd.read_csv('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Data/testImageName.csv', header=None)
+
+	################################## Standardization ###################################################################
+	CS_train_names = robot_state_train_input.columns
+	NS_train_names = robot_state_train_label.columns
+
+	CS_test_names = robot_state_test_input.columns
+	NS_test_names = robot_state_test_label.columns
+
+	scaler = preprocessing.StandardScaler()
+	input_Scaler = scaler.fit(robot_state_train_input)
+	output_Scaler = scaler.fit(robot_state_train_label)
+	robot_state_train_input = input_Scaler.transform(robot_state_train_input)
+	robot_state_train_label = output_Scaler.transform(robot_state_train_label)
+
+	robot_state_test_input = input_Scaler.transform(robot_state_test_input)
+	robot_state_test_label = output_Scaler.transform(robot_state_test_label)
+
+	robot_state_train_input = pd.DataFrame(robot_state_train_input, columns=CS_train_names)
+	robot_state_train_label = pd.DataFrame(robot_state_train_label, columns=NS_train_names)
+
+	robot_state_test_input = pd.DataFrame(robot_state_test_input, columns=CS_test_names)
+	robot_state_test_label = pd.DataFrame(robot_state_test_label, columns=NS_test_names)
+
+	robot_state_train_input = np.array(robot_state_train_input)
+	robot_state_train_label = np.array(robot_state_train_label)
+
+	robot_state_test_input = np.array(robot_state_test_input)
+	robot_state_test_label = np.array(robot_state_test_label)
+
+	############################################### Load image data #####################################################
+	X_train_filenames = pd.read_csv('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/trainImageName.csv', header=None)
+	X_test_filenames = pd.read_csv('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/testImageName.csv', header=None)
 	X_train_filenames = np.array(X_train_filenames)
 	X_test_filenames = np.array(X_test_filenames)
 
 	X_train_filenames = X_train_filenames[:, 0]
 	X_test_filenames = X_test_filenames[:, 0]
-
 	######################################################################################################################
+
 	class My_Custom_Generator(keras.utils.Sequence) :
-  	
+		
 		def __init__(self, image_filenames, robot_input,labels, batch_size) :
 			self.image_filenames = image_filenames
 			self.robot_input = robot_input
 			self.labels = labels
 			self.batch_size = batch_size
-    
+
 		def __len__(self) :
 			return (np.ceil(len(self.image_filenames) / float(self.batch_size))).astype(np.int)
 
@@ -79,7 +94,7 @@ with tf.device('/gpu:1'):
 			batch_y = self.labels[idx * self.batch_size : (idx+1) * self.batch_size]
 
 			return [np.array([
-			  	  resize(imread('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Data/all_images/' + str(file_name)), (224, 224, 3))
+			  	  resize(imread('/home/kiyanoushs/KiyanoushCodes/NeedleInsertion/Data/all_images/' + str(file_name)), (224, 224, 3))
 					 	  for file_name in batch_x_img])/255.0, np.array(batch_x_robot)], np.array(batch_y)
 
 
@@ -91,7 +106,7 @@ with tf.device('/gpu:1'):
 	########################################################## Define AlexNet CNN ####################################################
 
 	image_input_layer = keras.layers.Input(shape=(224,224,3))
-	
+
 	layer_conv_1 = keras.layers.Conv2D(filters=96, kernel_size=(11,11), strides=(4,4), padding='valid', activation="relu")(image_input_layer)
 	layer_pooling_1 = keras.layers.MaxPool2D(pool_size=(2,2), strides=(2,2), padding='valid')(layer_conv_1)
 
@@ -131,13 +146,13 @@ with tf.device('/gpu:1'):
 	monitor = EarlyStopping(monitor='val_loss', min_delta=1e-3, patience=2, 
 	        verbose=1, mode='auto', restore_best_weights=True)
 
-	history = model.fit_generator(generator=my_training_batch_generator, steps_per_epoch =int(50244 // batch_size), callbacks=[monitor], epochs=6)
+	history = model.fit_generator(generator=my_training_batch_generator, steps_per_epoch =int(50244 // batch_size), callbacks=[monitor], epochs=7)
 	#score = model.evaluate([test , robot_state_test_input] , robot_state_test_label) 
 
 
 	#predict_AlexNet_dense = model.predict([test , robot_state_test_input])
 
 	##################################### save Model ###########################################################################
-	#model.save('/home/kiyanoushs/Kiyanoush Codes/Needle Insertion/Models/AlexNet_Ordered.h5')
+	model.save('AlexNet.h5')
 
-	model.summary()
+	#model.summary()
