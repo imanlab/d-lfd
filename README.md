@@ -52,4 +52,4 @@ We have developed deep models for control action generation for the robot arm wh
   <img width="700" src="images/System(2).png">
 </p>
 
-In these models we make use of d and f components of robot data which contain Arm2 end-effecotr position and orientation in time step t and t+1 respectively. Camera calibration data is also concatenated with CNN laten vector and robot state vectors. Other complex models can be developed to further improve the control action generation. 
+In these models we make use of d and f components of robot data which contain Arm2 end-effecotr position and orientation in time step t and t+1 respectively. Camera calibration data is also concatenated with CNN laten vector and robot state vectors. For CNN block we have deployed architectures including AlexNet, VGG19, MobileNet, and ResNet. For the recurrent neural netwrok block we have used Single RNN, LSTM and GRU. Other complex models can be developed to further improve the control action generation. 
