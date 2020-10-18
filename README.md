@@ -18,7 +18,9 @@ The setup includes DVRK and three pairs of stereo cameras with calibrated pose r
   <img width="700" src="images/datasetsetup(2).png">
 </p>
 
-The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms synchronized joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots' base frames are included in the dataset as well. The overal structure of robot data can be stated as follow:
+In practice, surgeons utilise Arm 2  to manipulate the tissue and ensure the desired and actual exit-points are the same. Surgeons only use visual feedbacks to predict the needle exit point (performed by Arm 1) and close the control loop by commanding Arm 2 to push/pool the tissue. Formulating such tasks and implementing the corresponding automatic controller is very complex and time-consuming. Deep Robot Learnng from Demonstration can be effectively utilized to address such a control problem.
+
+The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. In each video, the desired needle tip exit point is specified by a red cross sign and robot data are being logged after this point appears on the screen. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms synchronized joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots' base frames are included in the dataset as well. As such, each folder include six videos corresponding to six cameras and a .mat file which contains robot stored data. The overal structure of robot data can be stated as follow:
 
 <p align="center">
   <img width="700" src="images/cell(4).png">
@@ -40,7 +42,14 @@ g: 2D tracking target point on the image captured by 6 cameras(6×2)
 
 h: computed 3D position of the target point w.r.t Camera 3(1×3)
 
+The .csv format of the data are also included in the "data" folder. In the "preprocessing" folder the "all_images.py" script is used to turn videos into images with the frequency equal to the robot data logging. The images are resized into 224*224 for transfer learning purposes. 
 
 ## Models
 
-We have developed deep models for control action generation for the robot arm which manipulates the tissue to guide the needle tip to exit from a desired specified point. As such, we have deployed state of the art CNN and RNN architectures as as feature extractor and next state predicotr respectively. The baseline methods achieved satisfactory performance based on the prediction error. Other complex models can be developed to further improve the control action generation. 
+We have developed deep models for control action generation for the robot arm which manipulates the tissue to guide the needle tip to exit from a desired specified point. As such, we have deployed state of the art CNN and RNN architectures as as feature extractor and next state predicotr respectively. The baseline methods achieved satisfactory performance based on the prediction error. The architecture of the developed models is shown in the following. 
+
+<p align="center">
+  <img width="700" src="images/System(2).png">
+</p>
+
+In these models we make use of d and f components of robot data which contain Arm2 end-effecotr position and orientation in time step t and t+1 respectively. Camera calibration data is also concatenated with CNN laten vector and robot state vectors. Other complex models can be developed to further improve the control action generation. 
