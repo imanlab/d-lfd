@@ -8,12 +8,17 @@
 * [Models](#Models)
 ## About The Project
 
-Suturing is a frequently used operation in most of the surgeries and developing a robotic system for autonomous robotic suturing can be of significant assistant to surgery team in order to reduce the physical fatigue and cognitive load. Since tissues are deformable objects needle insertion and tissue manipulation is a complex control task. The second complexity of the control task belongs to the high dimensional sensory data (Visual sensor) which makes the problem very hard for conventional control theory/Learning from Demonstration algorithms. We have collected a dataset for piercing needle into an artificial tissue with da Vinci Research Kit (DVRK) to develop deep LfD models for robot control.
+Suturing is a frequently used operation in most of the surgeries and developing a robotic system for autonomous robotic suturing can be of significant assistance to surgery team in order to reduce the physical fatigue and cognitive load. Since tissues are deformable objects, needle insertion and tissue manipulation is a complex control task. The second complexity of the control task belongs to the high dimensional sensory data (Visual sensor) which makes the problem very hard for conventional control theory/Learning from Demonstration algorithms. We have collected a dataset for piercing needle into an artificial tissue with da Vinci Research Kit (DVRK) to develop deep LfD models for robot control.
 
 
 ## Dataset Structure
 
-The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots base frames are included in the dataset as well. The overla structure of robot data can be stated as follow:
+The setup includes DVRK and three pairs of stereo cameras with calibrated pose relative to robot arms' base frames. An artificial tissue made of polyethylene with homogenous texture and Young's modulus of 1.5 GPa is the flexible tissue under operation. The setup is shown in the following figure.
+<p align="center">
+  <img width="700" src="images/datasetsetup(2).png">
+</p>
+
+The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms synchronized joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots' base frames are included in the dataset as well. The overal structure of robot data can be stated as follow:
 
 <p align="center">
   <img width="700" src="images/cell(4).png">
