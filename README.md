@@ -47,7 +47,7 @@ g: 2D tracking target point on the image captured by 6 cameras(6×2)
 
 h: computed 3D position of the target point w.r.t Camera 3(1×3)
 
-The .csv format of the data are also included in the "data" folder. In the "preprocessing" folder the "all_images.py" script is used to turn videos into images with the frequency equal to the robot data logging. The images are resized into 224*224 for transfer learning purposes. 
+In the /Data directory the 60 folders named as 1-60 include the six videos and the .mat file robot data for each trial. For an easier access, we have included the .csv format of the data in the /Data/CSV files/ directory as well. The default data collection for the robot kinematic was to save 4*4 homogenous transformation matrices; we have also transformed the orientation representation into unit quaternions and included the corresponding data in /Data/quaternion Pose/ directory. 
 
 ## Models
 
