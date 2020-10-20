@@ -53,12 +53,12 @@ The videos for a sample trial for the six cameras are shown in the following. Ea
 
 
 <p align="center">
-  <img width="280" src="/images/P1_left.gif">
-  <img width="280" src="/images/P2_left.gif">
-  <img width="280" src="/images/P3_left.gif">
-  <img width="280" src="/images/P1_right.gif">
-  <img width="280" src="/images/P2_right.gif">
-  <img width="280" src="/images/P3_right.gif">
+  <img width="250" src="/images/P1_left.gif">
+  <img width="250" src="/images/P2_left.gif">
+  <img width="250" src="/images/P3_left.gif">
+  <img width="250" src="/images/P1_right.gif">
+  <img width="250" src="/images/P2_right.gif">
+  <img width="250" src="/images/P3_right.gif">
 </p>
 
 
