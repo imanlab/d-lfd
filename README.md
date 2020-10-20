@@ -49,6 +49,20 @@ h: computed 3D position of the target point w.r.t Camera 3(1×3)
 
 In the /Data directory the 60 folders named as 1-60 include the six videos and the .mat file robot data for each trial. For an easier access, we have included the .csv format of the data in the /Data/CSV files/ directory as well. The default data collection for the robot kinematic was to save 4*4 homogenous transformation matrices; we have also transformed the orientation representation into unit quaternions and included the corresponding data in /Data/quaternion Pose/ directory. 
 
+The videos for a sample trial for the six cameras are shown in the following. Each column belongs to one stereo pair (top row left camera and bottom row right camera of each pair).
+
+
+<p align="center">
+  <img width="280" src="/images/P1_left.gif">
+  <img width="280" src="/images/P2_left.gif">
+  <img width="280" src="/images/P3_left.gif">
+  <img width="280" src="/images/P1_right.gif">
+  <img width="280" src="/images/P2_right.gif">
+  <img width="280" src="/images/P3_right.gif">
+</p>
+
+
+
 ## Models
 
 We have developed deep models for control action generation for the robot arm which manipulates the tissue to guide the needle tip to exit from a desired specified point. As such, we have deployed state of the art CNN and RNN architectures as as feature extractor and next state predicotr respectively. The baseline methods achieved satisfactory performance based on the prediction error. The architecture of the developed models is shown in the following. 
