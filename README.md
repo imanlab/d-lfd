@@ -25,7 +25,13 @@ The setup includes DVRK and three pairs of stereo cameras with calibrated pose r
   <img width="600" src="images/datasetsetup(2).png">
 </p>
 
-The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. In each video, the desired needle tip exit point is specified by a red cross sign and robot data are being logged after this point appears on the screen. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms synchronized joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots' base frames are included in the dataset as well. As such, each folder include six videos corresponding to six cameras and a .mat file which contains robot stored data. The overal structure of robot data can be stated as follow:
+The dataset includes 60 folders including the corresponding data for 60 successful needle insertion trials executed by an expert. In each video, the desired needle tip exit point is specified by a red cross sign and robot data are being logged after this point appears on the screen. The operation is recorded by three pairs of stereo cameras (six cameras in total) and DVRK arms synchronized joint space and end-effector data are stored. The calibration parameters which include the relative pose of two cameras in each pair and pose of each camera relative to robots' base frames are included in the dataset as well. The overall structure of the dataset is illustrated by the following figure.
+
+<p align="center">
+  <img width="800" src="images/datasetdiagram.png">
+</p>
+
+As such, each folder include six videos corresponding to six cameras and a .mat file which contains robot stored data. The overal structure of robot data can be stated as follow:
 
 <p align="center">
   <img width="700" src="images/cell(4).png">
