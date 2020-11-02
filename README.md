@@ -86,5 +86,5 @@ First run the imgdataset.py script in the /preprocessing directory to turn the v
 
 ## System Requirements
 
-The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 8GB memory with CUDA 11.0 for training and the models took maximum an hour to train. For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
+The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 8GB memory with CUDA 11.0 for training on Ubuntu 18.04 and the models took maximum an hour to train. For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
 
