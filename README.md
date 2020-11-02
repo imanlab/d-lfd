@@ -7,6 +7,7 @@
 * [Dataset Structure](#Dataset-Structure)
 * [Models](#Models)
 * [How to Run the Scripts](#How-to-Run-the-Scripts)
+* [System Requirements](#System-Requirements)
 ## About The Project
 
 Suturing is a frequently used operation in most of the surgeries and developing a robotic system for autonomous robotic suturing can be of significant assistance to surgery team in order to reduce the physical fatigue and cognitive load. Since tissues are deformable objects, needle insertion and tissue manipulation are complex control tasks. During inserting the circular needle (see Figure) into the deformable tissue, the needle tip pushes the tissue, hence, the desired and actual path differ and the actual exit-point, drifts away from the desired exit-point resulting in a less effective grip for the stitch or (in some cases) failure of the stitch- as the stitch cuts the tissue. In practice, surgeons utilise Arm 2  to manipulate the tissue and ensure the desired and actual exit-points are the same. Surgeons only use visual feedbacks to predict the needle exit point (performed by Arm 1 in the Fgure) and close the control loop by commanding Arm 2 to push/pool the tissue. 
@@ -85,5 +86,5 @@ First run the imgdataset.py script in the /preprocessing directory to turn the v
 
 ## System Requirements
 
-The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX 2080 graphic card with 8GB memory with CUDA 11.0 for training and the models took less than an hour to train. For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
+The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 8GB memory with CUDA 11.0 for training and the models took maximum an hour to train. For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
 
