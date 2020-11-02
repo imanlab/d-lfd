@@ -109,5 +109,6 @@ We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 
 * NVIDIA GeForce RTX2080
 * CUDA 11.0
 * Ubuntu 18.04
+
 For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
 
