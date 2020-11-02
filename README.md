@@ -82,9 +82,32 @@ In these models we make use of d and f components of robot data which contain Ar
 
 ## How to Run the Scripts
 
-First run the imgdataset.py script in the /preprocessing directory to turn the videos into images with a frequency equal to the logged robot data for each trial. For that datasetSize.csv is required which is available in /Data directory. This is due to the fact thta since for different trials, the number of saved cells are different (because trials are variable in length 7~10 second). After saving the images, different models scripts can be run from /Models directory. For these scripts 1- trainImageName.csv and testImageName.csv files (which include the image name of the train and test sets respectively) and 2- Arm2_CS_new.csv and Arm2_NS_new.csv (which include current and next step pose of Arm2) are required which can be found in /Data directory.
+First run the imgdataset.py script in the /preprocessing directory to turn the videos into images with a frequency equal to the logged robot data for each trial.
+
+    > run imgdataset.py 
+    
+    required file: Data/datasetSize.csv
+    
+For that datasetSize.csv is required which is available in /Data directory. This is due to the fact thta since for different trials, the number of saved cells are different (because trials are variable in length 7~10 second). After saving the images, different models scripts can be run from /Models directory.
+
+    > run customized_cnn.py, ResNet.py, MovileNet.py ...
+    
+    required files: Data/trainImageName.csv, testImageName.csv, Arm2_CS_new.csv, Arm2_NS_new.csv
+
+For these scripts 1- trainImageName.csv and testImageName.csv files (which include the image name of the train and test sets respectively) and 2- Arm2_CS_new.csv and Arm2_NS_new.csv (which include current and next step pose of Arm2) are required which can be found in /Data directory.
 
 ## System Requirements
 
-The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 8GB memory with CUDA 11.0 for training on Ubuntu 18.04 and the models took maximum an hour to train. For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
+The models' scripts can be run both with Trensroflow1 and 2 versions. The suggested Open-CV version for running preprocessing scripts is <= 4.1.2. Scikit-learn is required for preprocessing and standardization.
+
+   * Tensorflow== 1 & 2
+   * python-opencv <= 4.1.2
+   * Scikit-learn
+    
+We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 8GB memory with CUDA 11.0 for training on Ubuntu 18.04 and the models took maximum an hour to train. 
+* Tensorflow-gpu 2.2
+* NVIDIA GeForce RTX2080
+* CUDA 11.0
+* Ubuntu 18.04
+For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
 
