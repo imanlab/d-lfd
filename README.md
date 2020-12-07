@@ -112,3 +112,21 @@ We have used Tensorflow-gpu 2.2 with a NVIDIA GeForce RTX2080 graphic card with 
 
 For the RNN models at least 16GB RAM is required to load the input data for preprocessing. 
 
+
+ <a href="https://arxiv.org/abs/2012.02458 ">Read the paper here! </a> 
+ 
+ ### Citation
+
+If you find our work useful for your research, please cite:
+```
+@article{hashempour2020,
+  title={A data-set of piercing needle through deformable objects for Deep Learning from Demonstrations},
+  author={Hashempour, Hamidreza and Nazari, Kiyanoush and Zhong, Fangxun and Ghalamzan E., Amir },
+  journal={arXiv preprint arXiv:2012.02458},
+  year={2020}
+}
+```
+
+### License
+
+This project Code is released under the Apache License 2.0 (refer to the LICENSE file for details).
