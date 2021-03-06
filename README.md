@@ -119,11 +119,11 @@ For the RNN models at least 16GB RAM is required to load the input data for prep
 
 If you find our work useful for your research, please cite:
 ```
-@article{hashempour2020,
-  title={A data-set of piercing needle through deformable objects for Deep Learning from Demonstrations},
-  author={Hashempour, Hamidreza and Nazari, Kiyanoush and Zhong, Fangxun and Ghalamzan E., Amir },
-  journal={arXiv preprint arXiv:2012.02458},
-  year={2020}
+@article{Ghalamzan2021,
+  title={Learning needle insertion from sample task executions},
+  author={Amir Ghalamzan E.},
+  journal={Submitted to IEEE/RSJ International Conference Intelligent Robotic System (IROS)},
+  year={2021}
 }
 ```
 
