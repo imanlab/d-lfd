@@ -126,6 +126,14 @@ If you find our work useful for your research, please cite:
   year={2021}
 }
 ```
+```
+@article{Ghalamzan2021,
+  title={A data-set of piercing needle through deformable objects for Deep Learning from Demonstrations},
+  author={Hamidreza Hashempour, Kiyanoush Nazari, Fangxun Zhong, Amir Ghalamzan E.},
+  year={2020},
+  url  = "https://arxiv.org/abs/2012.02458",
+}
+```
 
 ### License
 
