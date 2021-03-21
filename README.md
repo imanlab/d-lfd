@@ -123,7 +123,8 @@ If you find our work useful for your research, please cite:
   title={Learning needle insertion from sample task executions},
   author={Amir Ghalamzan E.},
   journal={Submitted to IEEE/RSJ International Conference Intelligent Robotic System (IROS)},
-  year={2021}
+  year={2021},
+  url={https://arxiv.org/abs/2103.07938}
 }
 ```
 ```
