@@ -119,7 +119,7 @@ For the RNN models at least 16GB RAM is required to load the input data for prep
 
 If you find our work useful for your research, please cite:
 ```
-@article{Ghalamzan2021,
+@article{Ghalamzan2021software,
   title={Deep-LfD: Deep robot learning from demonstrations},
   author={Amir Ghalamzan E., Kiyanoush Nazari},
   journal={Software Impacts},
@@ -128,16 +128,7 @@ If you find our work useful for your research, please cite:
 }
 ```
 ```
-@article{Ghalamzan2021,
-  title={Learning needle insertion from sample task executions},
-  author={Amir Ghalamzan E.},
-  journal={Submitted to IEEE/RSJ International Conference Intelligent Robotic System (IROS)},
-  year={2021},
-  url={https://doi.org/10.1016/j.simpa.2021.100087}
-}
-```
-```
-@article{Ghalamzan2021,
+@article{Ghalamzan2021data,
   title={A data-set of piercing needle through deformable objects for Deep Learning from Demonstrations},
   author={Hamidreza Hashempour, Kiyanoush Nazari, Fangxun Zhong, Amir Ghalamzan E.},
   year={2020},
