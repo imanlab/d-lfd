@@ -121,19 +121,12 @@ If you find our work useful for your research, please cite:
 ```
 @article{Ghalamzan2021software,
   title={Deep-LfD: Deep robot learning from demonstrations},
-  author={Amir Ghalamzan E., Kiyanoush Nazari},
+  author={Amir Ghalamzan E., Kiyanoush Nazari, HamidrezaHashempour, FangxunZhong},
   journal={Software Impacts},
   year={2021},
   url={https://doi.org/10.1016/j.simpa.2021.100087}
 }
-```
-```
-@article{Ghalamzan2021data,
-  title={A data-set of piercing needle through deformable objects for Deep Learning from Demonstrations},
-  author={Hamidreza Hashempour, Kiyanoush Nazari, Fangxun Zhong, Amir Ghalamzan E.},
-  year={2020},
-  url  = "https://arxiv.org/abs/2012.02458",
-}
+
 ```
 
 ### License
